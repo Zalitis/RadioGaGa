@@ -1,7 +1,15 @@
 public class Radio {
     private int soundVolume;
     private int stationNumber;
+    protected int stationMax = 9;
 
+    public Radio() {
+        stationMax = 9;
+    }
+
+    public Radio(int stationCount) {
+        stationMax = stationCount - 1;
+    }
     public int getSoundVolume() {
         return soundVolume;
     }
@@ -36,14 +44,14 @@ public class Radio {
     public void setStationNumber(int newStationNumber) {
         if (newStationNumber < 0) {
             return;
-        } else if (newStationNumber > 9) {
+        } else if (newStationNumber > stationMax) {
             return;
         }
         stationNumber = newStationNumber;
     }
 
     public void nextStation() {
-        if (stationNumber < 9) {
+        if (stationNumber < stationMax) {
             stationNumber = stationNumber + 1;
         } else {
             stationNumber = 0;
